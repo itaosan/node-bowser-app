@@ -3,8 +3,19 @@ import { Task } from "./Task";
 export class TaskCollection {
     private tasks: Task[] = []
 
+    find(id :string){
+        return this.tasks.find((task) => task.id === id)
+    }
+
     add(task:Task){
         this.tasks.push(task)
+    }
+
+    update(task:Task){
+        this.tasks = this.tasks.map((item) =>{
+            if(item.id === task.id) return task
+            return item
+        })
     }
 
     delete(task:Task){
